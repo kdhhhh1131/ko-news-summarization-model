@@ -1,5 +1,5 @@
-# ko-news-summarization-model
-
+**# ko-news-summarization-model
+**
 # 📰 News-Summary-Bot (뉴스 3줄 요약 봇)
 
 긴 뉴스 기사를 입력하면 글의 핵심 정보와 수치를 파악하여 **명료하게 3줄로 요약해 주는 경량화 언어 모델(SLM)** 입니다. 
