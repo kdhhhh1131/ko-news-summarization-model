@@ -42,62 +42,13 @@
 ## 💻 설치 및 실행 방법
 
 ### 1. 환경 구성 (Colab 권장)
-본 프로젝트는 Google Colab T4 (무료 버전) 환경에서 원활하게 동작합니다.
+본 모델은 4-bit 양자화(Quantization)된 베이스 모델 위에 학습된 LoRA 가중치를 병합하여 사용하는 방식으로 동작합니다. Google Colab(무료 T4 GPU) 환경에서 가장 원활하게 실행할 수 있습니다.
 ```bash
-# Unsloth 및 필수 라이브러리 설치
-!pip install "unsloth[colab-new] @ git+[https://github.com/unslothai/unsloth.git](https://github.com/unslothai/unsloth.git)"
-!pip install --no-deps "xformers<0.0.27" "trl<0.9.0" peft accelerate bitsandbytes
-
-## 💻 추론 (Inference) 테스트 방법
-
-Unsloth의 최적화된 추론 환경을 통해 파인튜닝된 모델의 요약 능력을 바로 테스트해 볼 수 있습니다.
-
-### Python 실행 코드
-```python
-from unsloth import FastLanguageModel
-import torch
-
-# 1. 파인튜닝된 모델 로드 (Hugging Face Repository 또는 로컬 경로)
-# 주의: 'your_huggingface_id' 부분을 본인의 저장소 이름으로 변경하세요.
-model, tokenizer = FastLanguageModel.from_pretrained(
-    model_name = "your_huggingface_id/news-summary-bot", 
-    max_seq_length = 4096,
-    dtype = None,
-    load_in_4bit = True,
-)
-
-# 2. Unsloth 추론 속도 2배 향상 활성화
-FastLanguageModel.for_inference(model)
-
-# 3. 프롬프트 준비
-prompt = """다음 뉴스 기사를 읽고, 가장 중요한 핵심 팩트와 수치만 포함하여 명료하게 3줄로 요약해 주세요.
-
-[뉴스 기사]
-{기사_본문}
-
-3줄 요약:
-"""
-
-article = """
-(세종=연합뉴스) 안채원 기자 = 고용 안정성이 높은 상용직 근로자에서 60세 이상 고령층이 청년층을 앞질렀다. 청년층 인구 보다 상용직 감소 속도가 빠르게 나타나며 고용의 질에서도 세대 역전 흐름이 나타나는 것으로 보인다... (중략)
-"""
-
-inputs = tokenizer(
-    [prompt.format(기사_본문=article)],
-    return_tensors="pt"
-).to("cuda")
-
-# 4. 텍스트 생성 (온도를 낮춰 팩트 기반의 건조한 요약 유도)
-outputs = model.generate(
-    **inputs,
-    max_new_tokens = 256,
-    use_cache = True,
-    temperature = 0.2, 
-)
-
-# 5. 결과 출력
-result = tokenizer.batch_decode(outputs, skip_special_tokens=True)[0]
-print(result.split("3줄 요약:\n")[-1])
+### 1. 환경 설정 및 필수 라이브러리 설치
+모델 로드 및 4-bit 추론을 위해 아래 라이브러리들을 설치해야 합니다.
+```bash
+pip install -q transformers accelerate torch peft torchao
+pip install -U bitsandbytes>=0.46.1
 ```
 ## 📊 모델 성능 비교 및 분석 (Model Comparison)
 
