@@ -62,6 +62,7 @@ pip install -U bitsandbytes>=0.46.1
 
 
 ## 📊 모델 성능 비교 및 분석 (Model Comparison)
+
 베이스 모델(왼쪽). 파인튜닝 모델(오른쪽)
 <img width="1383" height="586" alt="스크린샷 2026-06-21 131750" src="https://github.com/user-attachments/assets/bc635bf7-1ff2-4048-9e34-75c28c8ccf52" />
 <img width="1367" height="519" alt="스크린샷 2026-06-21 131806" src="https://github.com/user-attachments/assets/f67248ff-bd43-449c-b48f-91dbf602b9af" />
