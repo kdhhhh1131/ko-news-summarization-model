@@ -65,7 +65,7 @@ model, tokenizer = FastLanguageModel.from_pretrained(
     dtype = None,
     load_in_4bit = True,
 )
-
+```
 # 2. Unsloth 추론 속도 2배 향상 활성화
 FastLanguageModel.for_inference(model)
 
