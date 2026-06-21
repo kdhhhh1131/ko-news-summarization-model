@@ -65,7 +65,7 @@ model, tokenizer = FastLanguageModel.from_pretrained(
     dtype = None,
     load_in_4bit = True,
 )
-```
+
 # 2. Unsloth 추론 속도 2배 향상 활성화
 FastLanguageModel.for_inference(model)
 
@@ -98,7 +98,7 @@ outputs = model.generate(
 # 5. 결과 출력
 result = tokenizer.batch_decode(outputs, skip_special_tokens=True)[0]
 print(result.split("3줄 요약:\n")[-1])
-
+```
 ## 📊 모델 성능 비교 및 분석 (Model Comparison)
 
 동일한 경제 뉴스 기사를 입력했을 때, 파인튜닝 전(베이스 모델)과 후(News-Summary-Bot)의 출력 결과를 비교한 분석입니다.
