@@ -13,9 +13,9 @@
 * **정확한 정보 추출**: 뉴스 기사 내의 구체적인 통계, 수치, 장소 등의 팩트를 잃지 않고 정확하게 요약문에 반영합니다.
 
 <br/>
-* **Finetuned Model**: [`kdhhhh1131/ko-news-summarization-model`](https://huggingface.co/kdhhhh1131/ko-news-summarization-model)
 
 ## 🛠 사용한 기술 스택 (Tech Stack)
+
 * **Base Model**: [`Qwen/Qwen2.5-1.5B-Instruct-bnb-4bit`](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct)
 * **Dataset**: [`daekeun-ml/naver-news-summarization-ko`](https://huggingface.co/datasets/daekeun-ml/naver-news-summarization-ko)
 
@@ -38,7 +38,7 @@
 * **LoRA Alpha**: 8
 * **Dropout**: 0.0
 * **Target Modules**: `q_proj`, `k_proj`, `v_proj`, `o_proj`, `gate_proj`, `up_proj`, `down_proj`
-
+* **Finetuned Model**: [`kdhhhh1131/ko-news-summarization-model`](https://huggingface.co/kdhhhh1131/ko-news-summarization-model)
 <br/>
 
 ## 💻 설치 및 실행 방법
